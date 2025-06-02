@@ -22,7 +22,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ImageProcessingRequestConsumer {
 
-    private static final String POST_IMAGE_KEY_FORMAT = "post-images/%d";
+    private static final String POST_IMAGE_KEY_FORMAT = "post-images/%s";
 
     private final ImageProcessingService imageProcessingService;
     private final ImageProcessingResultProducer imageProcessingResultProducer;
