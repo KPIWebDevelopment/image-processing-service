@@ -1,1 +1,26 @@
-spring.application.name=image-processing-service
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  rabbitmq:
+    host: ${AMQP_HOST:localhost}
+    port: ${AMQP_PORT:5672}
+    username: ${AMQP_USERNAME}
+    password: ${AMQP_PASSWORD}
+    listener:
+      simple:
+        acknowledge-mode: manual
+
+image-processing:
+  rabbitmq:
+    exchange: image-processing-exchange
+    request-queue: image-processing-request-queue
+    request-routing-key: image.process.request
+    result-queue: image-processing-result-queue
+    result-routing-key: image.process.result
+
+amazon:
+  s3:
+    bucket: ${S3_BUCKET}
+    access-key: ${AWS_ACCESS_KEY_ID}
+    secret-key: ${AWS_SECRET_ACCESS_KEY}
+    region: ${S3_REGION}
