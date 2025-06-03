@@ -37,6 +37,7 @@ public class ImageProcessingRequestConsumer {
             Channel channel,
             Message amqpMessage
     ) throws IOException {
+        log.info("Received image processing request message: {}", message);
         var deliveryTag = amqpMessage.getMessageProperties().getDeliveryTag();
         var imageProcessingResult = ImageProcessingResult.SUCCESS;
         Optional<byte[]> compressedImage = Optional.empty();
